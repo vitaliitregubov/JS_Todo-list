@@ -12,14 +12,6 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue'),
-    // childred: [
-    //   {
-    //     path: '/details',
-    //     name: 'details',
-    //     props: true,
-    //     component: () => import('../views/Details.vue')
-    //   },
-    // ]
   },
   {
     path: '/details/:id',
