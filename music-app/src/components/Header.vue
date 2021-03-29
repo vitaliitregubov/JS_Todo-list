@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     ...mapMutations(['toggleAuthModal', 'logOut']),
+    ...mapActions(['logOut'])
   }
 }
 </script>

@@ -13,12 +13,7 @@ export default createStore({
     },
     toggleAuth(state) {
       state.userLoggedIn = !state.userLoggedIn
-      alert(state.userLoggedIn)
     },
-    async logOut(state) {
-      await auth.signOut();
-      state.userLoggedIn = false
-    }
   },
   actions: {
     async register({ commit }, { email, password, name }) {
@@ -48,6 +43,10 @@ export default createStore({
     },
     async login({ commit }, { email, password }) {
       await auth.signInWithEmailAndPassword(email, password)
+      commit('toggleAuth')
+    },
+    async logOut({ commit }) {
+      await auth.signOut();
       commit('toggleAuth')
     }
   },

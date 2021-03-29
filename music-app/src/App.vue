@@ -19,7 +19,7 @@ export default {
     AppHeader,
     AuthModal,
   },
-  creted() {
+  created() {
     this.$store.dispatch('initLogin') // check if a user had been logged in
   }
 };
