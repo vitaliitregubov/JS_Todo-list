@@ -2,33 +2,44 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    user: {},
-    isLoaded: false,
-    color: "white"
+    authenticated: false,
+    links: [
+      {
+        id: 0,
+        title: 'Project Vue.js',
+        description: 'SPA'
+      },
+      {
+        id: 1,
+        title: 'Project Node.js',
+        description: 'Server side technology'
+      },
+      {
+        id: 2,
+        title: 'Project Nuxt.js',
+        description: 'Server side rendering'
+      },
+    ],
+    loginData: {
+      login: "",
+      password: ""
+    },
   },
   mutations: {
-    loadUserInfo(state, value) {
-      state.user = value
-      state.isLoaded = true
+    resetLoginForm(state) {
+      state.loginData.login = state.loginData.password = ""
     },
-    setColor(state, value) {
-      state.color = value
+
+    confirmAuthorization(state) {
+      state.authenticated = true
     }
   },
   actions: {
-    loadUserInfo({ commit }) {
-      fetch('https://randomuser.me/api/')
-        .then(res => res.json())
-        .then(data => commit('loadUserInfo', data.results[0]))
-        .catch(error => console.log(error))
-    },
-    setColor({ commit }, value) {
-      commit('setColor', value)
-    }
+   
   },
   getters: {
-    getUser(state) {
-      return state.user
+    loginDataGetter(state) {
+      return state.loginData
     }
   },
   modules: {

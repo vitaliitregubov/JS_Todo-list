@@ -1,46 +1,45 @@
 <template>
-  <div id="nav" :style="{ 'backgroundColor': pickColor }">
-    <div v-if="$store.state.isLoaded">
-      <figure>
-        <img :src="$store.state.user.picture.large" alt="user-photo">
-      </figure>
-
-      <figcaption>{{ $store.state.user.name.first }}</figcaption>
+  <div>
+    <div v-for="item in this.$store.state.links" :key="item.id">
+      <router-link :to="{ name: 'details', params: { id: item.id, description: item.description } }">
+        {{ item.title }}
+      </router-link>
     </div>
 
-    <button @click="load">Change user</button>
-    <input type="color" v-model="pickColor" />
+    <router-view :key="$route.path" />
   </div>
-
-  <router-view/>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      
-    }
-  },
-  computed: {
-    pickColor: {
-      get() {
-        return this.$store.state.color
-      },
-      set(value) {
-        this.$store.dispatch('setColor', value)
-      }
-    }
-  },
-  methods: {
-    load() {
-      this.$store.dispatch('loadUserInfo')
-    }
+  mounted() {
+    setTimeout(() => this.$router.replace({ name: 'details', params: { id: 0 } }), 3000)
   }
-}
+};
 </script>
 
 <style lang="scss">
+a {
+  color: inherit;
+}
+
+.router-link-exact-active {
+  color: pink;
+}
+
+.page-footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background-color: #111;
+  color: #fff;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
