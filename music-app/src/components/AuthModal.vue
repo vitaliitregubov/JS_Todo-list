@@ -113,7 +113,7 @@ export default {
   height: 40px;
   font-size: 24px;
   color: #fff;
-  background-color: rgb(48, 190, 238);
+  background-color: #ef5466;
   border: none;
   margin-top: 10px;
   cursor: pointer;
@@ -145,17 +145,13 @@ input[disabled] {
 }
 
 .label-radio:hover {
-  border-color: rgba(218, 112, 214, 0.4);
-  color: rgb(218, 112, 214, 0.4);
+  border-color: #ef5466;
+  color: #ef5466;
 }
 
 .label-radio.tab-active {
-  border-color: rgb(202, 24, 196);
-  color: rgb(202, 24, 196);
-}
-
-.label-radio.tab-active:hover {
-  border-color: orchid;
+  border-color: #ef5466;
+  color: #ef5466;
 }
 
 .close-btn {
@@ -167,7 +163,7 @@ input[disabled] {
   height: 30px;
   font-size: 20px;
   font-weight: 400;
-  background-color: red;
+  background-color: #ef5466;
   border: none;
   color: #fff;
   cursor: pointer;

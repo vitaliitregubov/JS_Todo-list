@@ -1,19 +1,18 @@
 <template>
-  <h2>ACCOUNT</h2>
-  <input type="text" v-model="age" />
+  <h1>HELLO BITCH!</h1>
 </template>
 
 <script>
 export default {
+  name: "account",
   data() {
     return {
-      user: 'Vitalii',
-      age: 0
-    }
+      user: "Vitalii",
+      age: 0,
+    };
   },
-}
+};
 </script>
 
 <style>
-
 </style>

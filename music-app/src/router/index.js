@@ -1,22 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '@/store'
 
 
 const routes = [
   {
-    path: '/account',
-    name: 'Account',
-    component: () => import('../components/Account.vue')
+    path: '/',
+    name: 'App',
+    component: () => import('@/views/Home')
   },
   {
-    path: '/:catchAll(.*)',
-    name: 'NotFoundPage',
-    component: () => import('../components/NotFoundPage')
-  }
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
+    path: '/account',
+    name: 'account',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import('../views/Account.vue')
+  },
+  {
+    path: '/manage',
+    redirect: { name: 'account' }
+  },
+  {
+    path: '/:catchAll(./*)*',
+    redirect: { name: 'App' },
+  },
+
   // {
   //   path: '/about',
   //   name: 'About',
@@ -30,6 +38,20 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  
+  if (!to.matched.some(record => record.meta.requiresAuth)) {
+    next()
+    return
+  }
+
+  if (store.state.userLoggedIn) {
+    next()
+  } else {
+    next({ name: 'App' })
+  }
 })
 
 export default router

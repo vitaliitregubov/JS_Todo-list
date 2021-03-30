@@ -1,9 +1,5 @@
 <template>
-  <router-link :to="{ name: 'Account' }">Go to your account -></router-link>
-  <hr>
-
   <AppHeader />
-
   <AuthModal />
 
   <router-view />
@@ -32,8 +28,16 @@ export default {
   padding: 0
 
 body
+  background-image: url('./assets/main-bg.svg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center/center
   font-family: 'Mukta', sans-serif
   padding: 0
   margin: 0
+  height: 100vh
+  color: #fff
+
+
 
 </style>

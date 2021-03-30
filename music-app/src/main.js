@@ -7,7 +7,7 @@ import { auth } from './includes/firebase'
 
 let app;
 
-// Loading Firebase first to check if a user has been logged in
+// Loading Firebase first to check if a user had been logged in
 auth.onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App).use(store).use(router).mount('#app')
