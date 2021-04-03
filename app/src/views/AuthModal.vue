@@ -4,8 +4,8 @@
       <button @click.prevent="toggleModal" class="modal-close-btn">x</button>
       
       <ul class="form-tabs">
-        <li @click="toggleForm('LoginForm')" :class="[{ active: formShown === 'LoginForm' }, 'form-tab']">Login</li>
-        <li @click="toggleForm('RegistrationForm')" :class="[{ active: formShown === 'RegistrationForm' }, 'form-tab']">Registration</li>
+        <li @click="formShown = 'LoginForm'" :class="[{ active: formShown === 'LoginForm' }, 'form-tab']">Login</li>
+        <li @click="formShown = 'RegistrationForm'" :class="[{ active: formShown === 'RegistrationForm' }, 'form-tab']">Registration</li>
       </ul>
 
       <keep-alive>
@@ -35,16 +35,12 @@ export default {
   },
   methods: {
     ...mapMutations(['toggleModal']),
-    toggleForm(value) {
-      this.formShown = value
-    }
   }
 }
 </script>
 
 <style lang="sass">
 @import '../sass/variables'
-// $color-active: #EF5466
 
 .modal-wrap
   display: none
@@ -76,14 +72,32 @@ export default {
         width: 50%
         text-align: center
         line-height: 40px
-        border: 2px solid rgba(0, 0, 0, 0.3)
-        color: rgba(0, 0, 0, 0.3)
+        border: 2px solid rgba(0, 0, 0, 0.6)
+        color: rgba(0, 0, 0, 0.6)
         cursor: pointer
         font-size: 1.2rem
 
         &.active
           border-color: $color-active
           color: $color-active
+
+    .error-msg
+      position: relative
+      padding-left: 30px
+      color: red
+
+      &::before
+        content: "!"
+        position: absolute
+        left: 0
+        display: inline-block
+        width: 20px
+        height: 20px
+        border-radius: 50%
+        font-weight: bold
+        text-align: center
+        color: #fff
+        background-color: red
 
     .form-group
       margin: 20px 0

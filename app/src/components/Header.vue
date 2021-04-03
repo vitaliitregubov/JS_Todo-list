@@ -9,15 +9,13 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Header',
   methods: {
     ...mapMutations(['toggleModal']),
-    logOut() {
-      alert('logged out')
-    }
+    ...mapActions(['logOut']),
   },
   computed: {
     ...mapState(['userLoggedIn'])

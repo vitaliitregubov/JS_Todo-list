@@ -13,6 +13,9 @@ export default {
   components: {
     AuthModal,
     Header
+  },
+  created() {
+    this.$store.dispatch('initLogin')
   }
 }
 </script>

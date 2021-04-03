@@ -1,5 +1,7 @@
 <template>
-  <form>
+  <form @submit.prevent="register(formData)">
+    <div v-if="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
     <div class="form-group">
       <label for="register-email" class="form-label">*Email</label>
       <input type="email" id="register-email" class="form-input" autocomplete="off" v-model="formData.email" required />
@@ -22,6 +24,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
@@ -29,12 +33,23 @@ export default {
         email: '',
         password: '',
         confirmPassword: ''
-      }
+      },
+      errorMsg: ''
     }
-  }
+  },
+  methods: {
+    ...mapActions(['register']),
+    async register({ email, password }) {
+      try {
+        await this.$store.dispatch('register', { email, password })
+      } catch(error) {
+          console.log(error)
+          this.errorMsg = error.message
+          return
+      }
+      
+      window.location.reload()
+    }
+  },
 }
 </script>
-
-<style>
-
-</style>
