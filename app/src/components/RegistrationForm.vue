@@ -4,17 +4,32 @@
 
     <div class="form-group">
       <label for="register-email" class="form-label">*Email</label>
-      <input type="email" id="register-email" class="form-input" autocomplete="off" v-model="formData.email" required />
+      <input
+        type="email" v-model.trim="formData.email" required
+        id="register-email" :class="[{ 'has-error' : emailError }, 'form-input']" autocomplete="off" 
+      />
     </div>
 
-    <div class="form-group">
+    <div class="form-group password-field">
       <label for="register-password" class="form-label">*Password</label>
-      <input type="password" id="register-password" class="form-input" v-model="formData.password" required />
+      <input
+        :type="passwordInputType" v-model.trim="formData.password"
+        id="register-password" :class="[{ 'has-error': passwordError }, 'form-input']" required
+      />
+      <span @click="toggleVisibility('passwordInputType')" class="toggle-visibility">
+        <i :class="[passwordInputType === 'text' ? 'fa-eye' : 'fa-eye-slash', 'fas']"></i>
+      </span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group password-field">
       <label for="register-confirm-password" class="form-label">*Confirm Password</label>
-      <input type="password" id="register-confirm-password" class="form-input" v-model="formData.confirmPassword" required />
+      <input 
+        :type="confirmPasswordInputType" v-model.trim="formData.confirmPassword"
+        id="register-confirm-password" :class="[{ 'has-error': passwordError}, 'form-input']" required 
+      />
+      <span @click="toggleVisibility('confirmPasswordInputType')" class="toggle-visibility">
+        <i :class="[confirmPasswordInputType === 'text' ? 'fa-eye' : 'fa-eye-slash', 'fas']"></i>
+      </span>
     </div>
 
     <div class="form-group">
@@ -34,22 +49,50 @@ export default {
         password: '',
         confirmPassword: ''
       },
-      errorMsg: ''
+      errorMsg: '',
+      passwordInputType: 'password',
+      confirmPasswordInputType: 'password',
+      emailError: false,
+      passwordError: false
     }
   },
   methods: {
     ...mapActions(['register']),
-    async register({ email, password }) {
-      try {
-        await this.$store.dispatch('register', { email, password })
-      } catch(error) {
-          console.log(error)
-          this.errorMsg = error.message
-          return
+    toggleVisibility(field) {
+      this[field] = this[field] === 'password' ? 'text' : 'password'
+    },
+    validateForm(password, confirmPassword) {
+      if (password === confirmPassword && password.length >= 6){
+        return false
+      } else if (password.length < 6) {
+          return 'Password should contain at least 6 chars'
+      } else if (confirmPassword !== password) {
+          return "Passwords don't match"
       }
+    },
+    async register({ email, password, confirmPassword }) {
+      const passwordMatchingRes = this.validateForm(password, confirmPassword)
+      if (passwordMatchingRes) {
+        this.errorMsg = passwordMatchingRes
+        this.passwordError = true
+        return
+      } else {
+          this.passwordError = false
+
+          try {
+            await this.$store.dispatch('register', { email, password })
+          } catch(error) {
+              console.log(error)
+              this.errorMsg = error.message
+              this.emailError = true
+              return
+          }
       
-      window.location.reload()
+          window.location.reload()
+      }
+
+   
     }
-  },
+  }
 }
 </script>

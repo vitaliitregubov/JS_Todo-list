@@ -2,7 +2,7 @@
   <Header />
   <AuthModal />
 
-  <router-view /> 
+  <router-view />
 </template>
 
 <script>
@@ -16,15 +16,18 @@ export default {
   },
   created() {
     this.$store.dispatch('initLogin')
-  }
+  },
 }
 </script>
 
 <style lang="sass">
-$color-active: #EF5466
-
 *
   box-sizing: border-box
   margin: 0
   padding: 0
+
+body
+  font-family: 'Lato', sans-serif
+  color: #444
+  background-color: #fff
 </style>

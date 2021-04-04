@@ -1,7 +1,9 @@
 <template>
   <section :class="[{ shown: modalShown }, 'modal-wrap']">
     <div class="modal-form">
-      <button @click.prevent="toggleModal" class="modal-close-btn">x</button>
+      <button @click.prevent="toggleModal" class="modal-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
       
       <ul class="form-tabs">
         <li @click="formShown = 'LoginForm'" :class="[{ active: formShown === 'LoginForm' }, 'form-tab']">Login</li>
@@ -9,7 +11,7 @@
       </ul>
 
       <keep-alive>
-        <component :is="formShown"></component>
+        <component :is="formShown" :toggleVisibility="toggleVisibility"></component>
       </keep-alive>
     </div>
   </section>
@@ -35,6 +37,9 @@ export default {
   },
   methods: {
     ...mapMutations(['toggleModal']),
+    toggleVisibility(field) {
+      this[field] = this[field] === 'password' ? 'text' : 'password'
+    },
   }
 }
 </script>
@@ -49,7 +54,7 @@ export default {
   right: 0
   top: 0
   bottom: 0
-  background-color: rgba(0, 0, 0, 0.6)
+  background-color: rgba(0, 0, 0, 0.7)
 
   &.shown
     display: block
@@ -113,6 +118,9 @@ export default {
         height: 34px
         padding: 0 10px
 
+        &.has-error
+          border: 2px solid red
+
       .form-submit
         height: 40px
         border: none
@@ -121,6 +129,24 @@ export default {
         background-color: $color-active
         color: #fff
         font-size: 1.6rem
+
+      &.password-field
+        position: relative
+
+        .toggle-visibility
+          position: absolute
+          display: inline-block
+          text-align: center
+          font-weight: 400
+          right: 0
+          bottom: 0
+          width: 34px
+          height: 34px
+          cursor: pointer
+
+          i
+            font-size: 16px
+            line-height: 34px
 
     .modal-close-btn
       position: absolute
@@ -132,4 +158,7 @@ export default {
       border-radius: 50%
       background-color: $color-active
       cursor: pointer
+
+      i
+        vertical-align: middle
 </style>

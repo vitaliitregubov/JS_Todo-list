@@ -3,12 +3,21 @@
     <div v-if="errorMsg" class="error-msg">{{ errorMsg }}</div>
     <div class="form-group">
       <label for="login-email" class="form-label">*Email</label>
-      <input type="email" id="login-email" class="form-input" autocomplete="off" v-model="formData.email" required />
+      <input
+        type="email" v-model.trim="formData.email" required 
+        id="login-email" :class="[{ 'has-error': errorMsg }, 'form-input']" autocomplete="off"
+      />
     </div>
 
-    <div class="form-group">
+    <div class="form-group password-field">
       <label for="login-password" class="form-label">*Password</label>
-      <input type="password" id="login-password" class="form-input" v-model="formData.password" required />
+      <input
+        :type="passwordInputType" v-model.trim="formData.password" required
+        id="login-password" :class="[{ 'has-error': errorMsg }, 'form-input']" 
+      />
+      <span @click="toggleVisibility" class="toggle-visibility">
+        <i :class="[passwordInputType === 'text' ? 'fa-eye' : 'fa-eye-slash', 'fas']"></i>
+      </span>
     </div>
 
     <div class="form-group">
@@ -25,16 +34,19 @@ export default {
         email: '',
         password: ''
       },
-      errorMsg: ''
+      errorMsg: '',
+      passwordInputType: 'password'
     }
   },
   methods: {
+    toggleVisibility() {
+      this.passwordInputType = this.passwordInputType === 'password' ? 'text' : 'password'
+    },
     async login({ email, password }) {
       try {
         await this.$store.dispatch('login', { email, password })
         window.location.reload()
       } catch(error) {
-        console.log(error)
         this.errorMsg = 'Invalid Login or Password'
         return
       }
@@ -42,3 +54,4 @@ export default {
   }
 }
 </script>
+
