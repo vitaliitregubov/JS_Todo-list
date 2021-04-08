@@ -6,28 +6,19 @@
 </template>
 
 <script>
-import AuthModal from '@/views/AuthModal';
-import Header from '@/components/Header';
+import AuthModal from "@/views/AuthModal";
+import Header from "@/components/Header";
+import products from "@/includes/products";
 
 export default {
   components: {
     AuthModal,
-    Header
+    Header,
   },
   created() {
     this.$store.dispatch('initLogin')
+    this.$store.commit('loadProducts', products)
   },
-}
+};
 </script>
 
-<style lang="sass">
-*
-  box-sizing: border-box
-  margin: 0
-  padding: 0
-
-body
-  font-family: 'Lato', sans-serif
-  color: #444
-  background-color: #fff
-</style>

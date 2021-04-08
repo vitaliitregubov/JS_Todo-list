@@ -45,11 +45,12 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../sass/variables'
+@import '../sass/helpers'
 
 .modal-wrap
   display: none
-  position: absolute
+  position: fixed
+  z-index: 999
   left: 0
   right: 0
   top: 0
@@ -92,10 +93,9 @@ export default {
       color: red
 
       &::before
+        @include pseudoEl
         content: "!"
-        position: absolute
         left: 0
-        display: inline-block
         width: 20px
         height: 20px
         border-radius: 50%
@@ -124,7 +124,6 @@ export default {
       .form-submit
         height: 40px
         border: none
-        cursor: pointer
         margin-top: 10px
         background-color: $color-active
         color: #fff
@@ -157,7 +156,6 @@ export default {
       height: 30px
       border-radius: 50%
       background-color: $color-active
-      cursor: pointer
 
       i
         vertical-align: middle

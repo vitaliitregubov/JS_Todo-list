@@ -1,0 +1,103 @@
+$color-active: #EF5466
+$color-accent: #ff0092
+
+$light-theme-bg-primary: #fff
+$light-theme-bg-secondary: #f6f6f5
+$light-theme-text-primary: #444
+
+$dark-theme-bg-primary: #222
+$dark-theme-bg-secondary: #333
+$dark-theme-text-primary: #fff
+
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+body
+  font-family: 'Lato', sans-serif
+  color: $light-theme-text-primary
+  background-color: $light-theme-bg-primary
+
+  .secondary-bg
+    background-color: $light-theme-bg-secondary
+
+  .border-bottom
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+
+  .border-right
+     border-right: 1px solid rgba(0, 0, 0, 0.1)
+
+body[data-mode="dark"]
+  color: $dark-theme-text-primary
+  background-color: $dark-theme-bg-primary
+
+  .secondary-bg
+    background-color: $dark-theme-bg-secondary
+
+  .border-bottom
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+
+  .border-right
+    border-right: 1px solid rgba(255, 255, 255, 0.2)
+
+@mixin pseudoEl
+  content: ""
+  display: inline-block
+  position: absolute
+
+.text-overflow
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.flex
+  display: flex
+
+.column
+  flex-direction: column
+
+.align-center
+  align-items: center
+
+.between
+  justify-content: space-between
+
+.pt-lg
+  padding-top: 60px
+
+.border-rounded
+  border-radius: 25px
+
+ul,
+ol
+  list-style: none
+
+.container
+  max-width: 1170px
+  padding: 80px 15px
+  margin: 0 auto
+
+button
+  border: none
+  cursor: pointer
+  color: #fff
+  background-color: inherit
+
+  &:hover
+    opacity: 0.9
+
+a
+  text-decoration: none
+  color: inherit
+
+  &.router-link-exact-active
+    color: $color-active
+
+  &.logo
+    color: $color-active
+
+label
+  position: relative
+  cursor: pointer
