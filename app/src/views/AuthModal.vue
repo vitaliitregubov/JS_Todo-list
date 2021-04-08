@@ -66,6 +66,7 @@ export default {
     margin: 10vh auto 0
     padding: 30px 20px 10px
     background: #fff
+    color: #333
 
     .form-tabs
       display: flex
