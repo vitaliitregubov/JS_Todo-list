@@ -1,11 +1,11 @@
 <template>
-  <section class="flex column align-center pt-lg">
+  <main class="flex column align-center pt-lg">
     <img src="../assets/404.png" alt="not-found-page" />
     <h2>404: Page not found</h2>
     <router-link :to="{ name: 'Home' }" class="border-rounded"
       ><button>Back to the Home page</button></router-link
     >
-  </section>
+  </main>
 </template>
 
 <style lang="sass" scoped>

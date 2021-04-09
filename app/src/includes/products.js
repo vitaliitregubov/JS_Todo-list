@@ -2,6 +2,7 @@ const products = [
   {
     id: 0,
     name: 'Samsung Galaxy Pro New edition',
+    // img: '@/assets/Samsung-galaxy.jpg',
     price: '200',
     discount: '20%',
     available: true,
@@ -12,6 +13,7 @@ const products = [
       RAM: '2',
       country: 'USA',
     },
+    rate: "4",
     reviews: [
       {
         id: 0,
@@ -26,20 +28,6 @@ const products = [
         name: 'Mary Landrone',
         rate: 3,
         text: "Worse than IPhone and it's price is too high"
-      },
-      {
-        id: 2,
-        date: '22/03/2020',
-        name: 'Jack Daniels',
-        rate: 3,
-        text: "Give my money back ****!"
-      },
-      {
-        id: 3,
-        date: '22/03/2020',
-        name: 'D.Tyvol',
-        rate: 4,
-        text: "Good for this price"
       },
 
     ]
@@ -57,6 +45,7 @@ const products = [
       RAM: '3',
       country: 'USA',
     },
+    rate: "5",
     reviews: [
       {
         id: 0,
@@ -102,6 +91,7 @@ const products = [
       RAM: '5',
       country: 'USA',
     },
+    rate: "5",
     reviews: [
       {
         id: 0,
@@ -131,6 +121,13 @@ const products = [
         rate: 4,
         text: "Good for this price"
       },
+      {
+        id: 4,
+        date: '22/03/2020',
+        name: 'D.Tyvol',
+        rate: 5,
+        text: "Good for this price"
+      },
 
     ]
   },
@@ -147,6 +144,7 @@ const products = [
       RAM: '4',
       country: 'USA',
     },
+    rate: "4",
     reviews: [
       {
         id: 0,
@@ -192,6 +190,7 @@ const products = [
       RAM: '4',
       country: 'USA',
     },
+    rate: "3",
     reviews: [
       {
         id: 0,
@@ -213,13 +212,6 @@ const products = [
         name: 'Jack Daniels',
         rate: 4,
         text: "Give my money back ****!"
-      },
-      {
-        id: 4,
-        date: '22/03/2020',
-        name: 'D.Tyvol',
-        rate: 5,
-        text: "Good for this price"
       },
 
     ] 

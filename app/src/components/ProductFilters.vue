@@ -1,5 +1,5 @@
 <template>
-  <aside class="filters secondary-bg border-right">
+  <aside class="filters border-top border-right">
     <section class="filter-group price-filter border-bottom">
       <h4>Price max:</h4>
       <div class="flex between">
@@ -47,7 +47,7 @@ export default {
 @import '../sass/helpers'
 
 .filters
-  width: 300px
+  width: 220px
 
   .ram-option-wrapper
     margin-bottom: 8px

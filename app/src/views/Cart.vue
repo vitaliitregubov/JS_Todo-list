@@ -12,12 +12,14 @@
         </router-link>
         <div class="product-controls">
           <div class="change-quantity">
-            <button @click.prevent="decreaseProductQuantity(item.id)" class="change-quantity-btn">
-              -
+            <button :class="[{ 'disabled-btn' : String(item.quantity) === '1' }, 'change-quantity-btn']" 
+              @click.prevent="decreaseProductQuantity(item.id)"
+            >
+              <i class="fal fa-minus"></i>
             </button>
-            <span class="product-quantity">{{ item.quantity || 1 }}</span>
+            <span class="product-quantity">{{ item.quantity }}</span>
             <button @click.prevent="increaseProductQuantity(item.id)" class="change-quantity-btn">
-              +
+              <i class="fal fa-plus"></i>
             </button>
           </div>
           <span class="product-price">{{ Number(item.quantity) * Number(item.price) }}</span>
@@ -110,11 +112,13 @@ h2
           height: 30px
           width: 30px
           line-height: 30px
-          border-radius: 50%
-          border: 2px solid 
           background: transparent
-          font-size: 1.1rem
           color: inherit
+
+          &.disabled-btn
+            opacity: 0.2
+            outline: none
+            cursor: auto
 
         .product-quantity
           display: inline-block

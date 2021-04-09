@@ -23,6 +23,12 @@ body
   .secondary-bg
     background-color: $light-theme-bg-secondary
 
+  .bordered
+    border: 1px solid rgba(0, 0, 0, 0.1)
+
+  .border-top
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+
   .border-bottom
     border-bottom: 1px solid rgba(0, 0, 0, 0.1)
 
@@ -33,8 +39,17 @@ body[data-mode="dark"]
   color: $dark-theme-text-primary
   background-color: $dark-theme-bg-primary
 
+  .page-header
+    background-color: $dark-theme-bg-primary
+
   .secondary-bg
     background-color: $dark-theme-bg-secondary
+
+  .bordered
+    border: 1px solid rgba(255, 255, 255, 0.2)
+
+  .border-top
+    border-top: 1px solid rgba(255, 255, 255, 0.2)
 
   .border-bottom
     border-bottom: 1px solid rgba(255, 255, 255, 0.2)
@@ -64,8 +79,18 @@ body[data-mode="dark"]
 .between
   justify-content: space-between
 
+.evenly
+  justify-content: space-evenly
+
+.wrap
+  flex-wrap: wrap
+
+.px-sm
+  padding-left: 15px
+  padding-right: 15px
+
 .pt-lg
-  padding-top: 60px
+  padding-top: 80px
 
 .border-rounded
   border-radius: 25px

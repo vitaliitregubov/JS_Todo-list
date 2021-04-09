@@ -1,21 +1,19 @@
 <template>
-  <header class="page-header flex align-center between border-bottom">
+  <header class="page-header flex align-center between">
     <router-link to="/" class="logo"><h1>InterStore</h1></router-link>
     <section class="flex align-center">
-      <div class="flex align-center" title="dark-mode">
-        <input type="checkbox" id="mode" class="mode-input" @change="toggleMode" />
+      <div class="flex align-center mode" title="dark-mode">
+        <input type="checkbox" id="mode" :checked="theme === 'dark'" class="mode-input" @change="toggleMode" />
         <label for="mode" class="mode-label border-rounded"></label>
       </div>
       <a v-if="!userLoggedIn" href="#" @click.prevent="toggleModal" class="auth border-rounded">Log in / Sign up</a>
       <template v-else>
-        <router-link :to="{ name: 'Cart' }" class="menu-link cart" :data-quantity="chosenProducts.length">
-          <i class="far fa-user"></i>
-          Cart
-        </router-link>
-        <a href="#" @click.prevent="signOut" class="menu-link logout">
-          <i class="far fa-sign-out"></i>
-          Log out
+        <a href="#" @click.prevent="signOut" class="menu-link logout" title="sign out">
+          <i class="fal fa-sign-out"></i>
         </a>
+        <router-link :to="{ name: 'Cart' }" class="menu-link cart" :data-quantity="chosenProducts.length" title="cart">
+          <i class="fal fa-shopping-cart"></i>
+        </router-link>    
       </template>
     </section>
   </header>
@@ -26,20 +24,31 @@ import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'Header',
+  data() {
+    return {
+      theme: ''
+    }
+  },
   methods: {
     ...mapMutations(['toggleModal']),
     signOut() {
-      this.$store.dispatch('logOut');
+      this.$store.dispatch('logOut')
 
-      if (this.$route.meta.requiresAuth) {
+      this.$route.meta.requiresAuth && 
         this.$router.push({ name: 'Home' })
-      }
     },
     toggleMode() {
-      const currentMode = window.document.body.dataset.mode || 'light'
-      const setMode = currentMode === 'light' ? 'dark' : 'light'
-      window.document.body.setAttribute('data-mode', setMode);
-    }
+      const newTheme = localStorage.getItem('theme') === 'light' ? 'dark' : 'light'
+      localStorage.setItem('theme', newTheme)
+      window.document.body.setAttribute('data-mode', newTheme)
+      this.theme = newTheme
+    },
+  },
+  created() {
+    !localStorage.getItem('theme') && localStorage.setItem('theme', 'light')
+    const theme = localStorage.getItem('theme')
+    window.document.body.setAttribute('data-mode', theme)
+    this.theme = theme
   },
   computed: {
     ...mapState(['userLoggedIn', 'chosenProducts'])
@@ -61,32 +70,36 @@ export default {
   z-index: 100
   padding: 0 15px
   height: 60px
+  background-color: #fff
 
-  .mode-label
-    width: 40px
-    height: 20px
-    background-color: lightgrey
-    margin-right: 20px
+  .mode
+    margin-top: 8px
 
-    &::before
-      @include pseudoEl
-      left: 0
-      bottom: 0
-      width: 20px
+    .mode-label
+      width: 40px
       height: 20px
-      border-radius: 50%
-      background-color: #888
-      transition: all .3s ease
-
-  .mode-input
-    display: none
-
-    &:checked ~ .mode-label
-      background-color: $color-active
+      background-color: lightgrey
+      margin-right: 10px
 
       &::before
-        transform: translateX(20px)
-        background-color: #555 
+        @include pseudoEl
+        left: 0
+        bottom: 0
+        width: 20px
+        height: 20px
+        border-radius: 50%
+        background-color: #888
+        transition: all .3s ease
+
+    .mode-input
+      display: none
+
+      &:checked ~ .mode-label
+        background-color: $color-active
+
+        &::before
+          transform: translateX(20px)
+          background-color: #fff 
 
   .auth
     color: #fff
@@ -96,12 +109,17 @@ export default {
     font-size: 1.2rem
 
   .menu-link
-    padding: 8px 0
-    margin-left: 40px
+    margin-left: 20px
+    width: 40px
+    height: 40px
+    text-align: center
+    line-height: 40px
+
+    &:hover
+      color: $color-active
 
     i
       vertical-align: middle
-      padding-right: 10px
       font-size: 1.6rem  
 
     &.cart

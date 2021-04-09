@@ -6,7 +6,7 @@ export default createStore({
     products: [],
     chosenProducts: [],
     modalShown: false,
-    userLoggedIn: true
+    userLoggedIn: false
   },
   mutations: {
     loadProducts: (state, payload) => state.products = payload,
