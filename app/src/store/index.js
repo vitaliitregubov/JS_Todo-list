@@ -10,6 +10,7 @@ export default createStore({
   },
   mutations: {
     loadProducts: (state, payload) => state.products = payload,
+    clearCart: (state) => state.chosenProducts = [],
     toggleModal: (state) => state.modalShown = !state.modalShown,
     toggleAuth: (state) => state.userLoggedIn = !state.userLoggedIn,
     addProduct: (state, id) => {
@@ -52,7 +53,7 @@ export default createStore({
     }
   },
   getters: {
-    filterByRam: (state, ram) =>  state.chosenProducts.filter(item => Number(item.techSpecs.ram) === Number(ram)),
+    getProduct: (state, id) => state.products.find(item => Number(item.id) === Number(id))
   }
 })
 

@@ -32,10 +32,15 @@ export default {
       accountMenuShown: false
     }
   },
+  computed: {
+    ...mapState(['userLoggedIn', 'chosenProducts'])
+  },
   methods: {
     ...mapMutations(['toggleModal']),
     signOut() {
       this.$store.dispatch('logOut')
+
+      this.$store.commit('clearCart')
 
       this.$route.meta.requiresAuth && 
         this.$router.push({ name: 'Home' })
@@ -46,8 +51,12 @@ export default {
       window.document.body.setAttribute('data-mode', newTheme)
       this.theme = newTheme
     },
-    openAccountMenu() {
+    closeAccountMenu(target) {
+      if (!target.parentElement) return
 
+      if (!target.dataset.accountMenu && !target.parentElement.dataset.accountMenu) {
+        this.accountMenuShown = false
+      }
     }
   },
   created() {
@@ -56,16 +65,10 @@ export default {
     window.document.body.setAttribute('data-mode', theme)
     this.theme = theme
 
-    window.document.body.addEventListener('click', (e) => {
-      e.stopPropagation()
-      if (!e.target.dataset.accountMenu && !e.target.parentElement.dataset.accountMenu) {
-        this.accountMenuShown = false
-        console.log('triggered')
-      }
-    })
+    window.document.body.addEventListener('click', ({ target }) => this.closeAccountMenu(target))
   },
-  computed: {
-    ...mapState(['userLoggedIn', 'chosenProducts'])
+  beforeUnmount() {
+    window.document.body.removeEventListener('click', this.closeAccountMenu)
   }
 }
 </script>
@@ -78,10 +81,6 @@ export default {
     display: none
 
 .page-header
-  position: fixed
-  left: 0
-  right: 0
-  z-index: 100
   padding: 0 15px
   height: 60px
   background-color: #fff
@@ -137,7 +136,6 @@ export default {
       align-items: flex-end
 
     .mode-label
-      position: relative
       padding-left: 20px
       width: 100%
       height: 30px
@@ -174,32 +172,6 @@ export default {
       &:checked ~ .mode-label::after
         transform: translateX(20px)
         background-color: #fff
-    
-    // .mode-label
-    //   display: inline-block
-    //   width: 40px
-    //   height: 20px
-    //   background-color: lightgrey
-    //   margin-right: 20px
-
-    //   &::before
-    //     @include pseudoEl
-    //     left: 0
-    //     bottom: 0
-    //     width: 20px
-    //     height: 20px
-    //     border-radius: 50%
-    //     background-color: #888
-    //     transition: all .3s ease
-
-    
-
-    //   &:checked ~ .mode-label
-    //     background-color: $color-active
-
-    //     &::before
-    //       transform: translateX(20px)
-    //       background-color: #fff 
 
   .auth
     color: #fff
@@ -212,7 +184,6 @@ export default {
     position: relative
     margin-left: 30px
     margin-right: 10px
-    line-height: 40px
     font-size: 2rem 
 
     &:hover

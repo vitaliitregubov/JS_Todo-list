@@ -36,9 +36,6 @@ export default {
         ram: [1, 2, 3, 4, 5]
       }
     }
-  },
-  updated() {
-    console.log(this.filters.ram)
   }
 }
 </script>

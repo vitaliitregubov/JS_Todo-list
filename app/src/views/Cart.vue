@@ -50,8 +50,8 @@ export default {
     ...mapMutations(["increaseProductQuantity", "decreaseProductQuantity"]),
     removeProduct(id) {
       this.$store.commit("removeProduct", id);
-    },
-  },
+    }
+  }
 };
 </script>
 

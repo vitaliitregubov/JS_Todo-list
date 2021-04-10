@@ -1,5 +1,5 @@
 <template>
-  <main class="flex pt-lg">
+  <main class="flex">
     <ProductFilters />
 
     <section class="flex wrap between">
