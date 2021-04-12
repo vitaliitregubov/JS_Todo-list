@@ -4,8 +4,8 @@
       :to="{ name: 'ProductDetails', params: { id } }"
       class="product-link"
     >
-      <div class="product-img">
-        <img src="../assets/Samsung.png" :alt="name">
+      <div class="product-img flex center">
+        <img :src="image" :alt="name">
       </div>
       <h4 class="product-title text-overflow">{{ name }}</h4>
     </router-link>
@@ -14,7 +14,7 @@
 
     <div class="product-rate-reviews">
       <router-link class="rate" :to="{ name: 'Cart' }">
-        <i v-for="i in 5" :key="i" :class="[{ filled: Number(rate) >= i }, 'fas', 'fa-star']"></i>
+        <i v-for="i in 5" :key="i" :class="[{ filled: Number(rate) >= i }, 'fas fa-star rate']"></i>
         <span class="reviews"> {{ reviews.length }} reviews</span>
       </router-link>
     </div>
@@ -36,7 +36,7 @@
 import { mapMutations } from 'vuex'
 
 export default {
-  props: [ 'id', 'name', 'price', 'discount', 'available', 'reviews', 'rate' ],
+  props: [ 'id', 'name', 'price', 'discount', 'available', 'reviews', 'rate', 'image' ],
   methods: {
     ...mapMutations(["addProduct"]),
     priceInitial(price, discount) {
@@ -94,12 +94,14 @@ export default {
       height: auto
       max-height: 100%
       max-width: 100%
+      background-color: inherit
 
   .product-title
+    margin-top: 10px
+    margin-bottom: 5px
     font-size: 1.1rem
     line-height: 1.1rem
     font-weight: 400
-    margin-bottom: 10px
 
   .product-rate-reviews
     font-size: .8rem
@@ -109,12 +111,6 @@ export default {
     &:hover
       .reviews
         text-decoration: underline
-
-    .rate
-      color: #caccd1
-    
-      .filled
-        color: #ffc845
 
     .reviews
       padding-left: 10px
@@ -143,7 +139,7 @@ export default {
       text-align: center
       line-height: 40px
       font-size: 1.4rem
-      color: #009f4d
+      color: $color-green
 
       i
         font-weight: 300
@@ -160,7 +156,7 @@ export default {
           top: 2px
           right: 18px
           border: 1px solid #fff
-          background-color: #009f4d
+          background-color: $color-green
         
         &::after
           @include pseudoEl

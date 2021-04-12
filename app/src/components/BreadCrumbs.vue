@@ -39,7 +39,4 @@ nav
         content: ">"
         right: -20px
         opacity: 0.5
-
-      i
-        font-size: 40px
 </style>

@@ -33,7 +33,7 @@ export default {
     return {
       filters: {
         priceMax: 5000,
-        ram: [1, 2, 3, 4, 5]
+        ram: []
       }
     }
   }
@@ -61,18 +61,19 @@ export default {
       &::after
         @include pseudoEl
         left: 0
-        width: 20px 
-        height: 20px
-        border-radius: 10px
+        bottom: 0
+        width: 16px 
+        height: 16px
+        border-radius: 4px
         background-color: #dbe0e3
 
       &::after
         display: none
         border-radius: 0
-        left: 4px
+        left: 3px
         bottom: 6px
-        width: 10px
-        height: 6px
+        width: 8px
+        height: 4px
         background-color: transparent
         border: 3px solid #fff
         transform: rotate(-45deg)
@@ -81,10 +82,9 @@ export default {
 
 
     input:checked + label
-      color: $color-active
 
       &::before
-        background-color: $color-active
+        background-color: $color-green
 
       &::after
         display: block

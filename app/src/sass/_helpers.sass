@@ -1,12 +1,11 @@
 $color-active: #EF5466
 $color-accent: #ff0092
+$color-green: #009f4d
 
 $light-theme-bg-primary: #fff
-$light-theme-bg-secondary: #f6f6f5
 $light-theme-text-primary: #444
 
 $dark-theme-bg-primary: #222
-$dark-theme-bg-secondary: #333
 $dark-theme-text-primary: #fff
 
 
@@ -19,9 +18,7 @@ body
   font-family: 'Lato', sans-serif
   color: $light-theme-text-primary
   background-color: $light-theme-bg-primary
-
-  .secondary-bg
-    background-color: $light-theme-bg-secondary
+  min-height: 100vh
 
   .bordered
     border: 1px solid rgba(0, 0, 0, 0.1)
@@ -41,9 +38,6 @@ body[data-mode="dark"]
 
   .page-header
     background-color: $dark-theme-bg-primary
-
-  .secondary-bg
-    background-color: $dark-theme-bg-secondary
 
   .bordered
     border: 1px solid rgba(255, 255, 255, 0.2)
@@ -70,8 +64,15 @@ body[data-mode="dark"]
 .relative
   position: relative
 
+.text-center
+  text-align: center
+
 .flex
   display: flex
+
+.center
+  align-items: center
+  justify-content: center
 
 .column
   flex-direction: column
@@ -91,12 +92,22 @@ body[data-mode="dark"]
 .wrap
   flex-wrap: wrap
 
+.p-sm
+  padding: 10px
+
+.py-sm
+  padding-top: 5px
+  padding-bottom: 5px
+
 .px-sm
   padding-left: 15px
   padding-right: 15px
 
 .pt-lg
   padding-top: 80px
+
+.mb-md
+  margin-bottom: 15px
 
 .border-rounded
   border-radius: 25px
@@ -132,3 +143,10 @@ a
 label
   position: relative
   cursor: pointer
+
+i.rate
+  font-size: 0.8rem
+  color: #caccd1
+  
+  &.filled
+    color: #ffc845
