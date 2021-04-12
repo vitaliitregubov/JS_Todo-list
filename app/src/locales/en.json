@@ -1,0 +1,36 @@
+{
+  "auth": {
+    "auth": "Login / Sign up",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "confirmPass": "Confirm Password",
+    "register": "Registration",
+    "submit": "Submit"
+  },
+  "home": {
+ 
+  },
+  "productDetails": {
+    "reviews": "Reviews:",
+    "techSpecs": "Specs:"
+  },
+  "cart": {
+    "cartHeading": "Cart",
+    "emptyCart": "Your cart is empty",
+    "addProducts": "Add products",
+    "removeProduct": "remove",
+    "total": "Total",
+    "checkOut": "Check Out"
+  },
+  "pageNotFound": {
+
+  },
+  "authModal": {
+
+  },
+  "account": {
+    "darkMode": "Dark mode",
+    "logOut": "Log out"
+  }
+}

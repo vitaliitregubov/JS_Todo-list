@@ -1,13 +1,13 @@
 <template>
   <section :class="[{ shown: modalShown }, 'modal-wrap']">
     <div class="modal-form">
-      <button @click.prevent="toggleModal" class="modal-close-btn">
+      <button @click.prevent="toggleModal" class="modal-close-btn" aria-label="close-modal">
         <i class="fas fa-times"></i>
       </button>
       
       <ul class="form-tabs">
-        <li @click="formShown = 'LoginForm'" :class="[{ active: formShown === 'LoginForm' }, 'form-tab']">Login</li>
-        <li @click="formShown = 'RegistrationForm'" :class="[{ active: formShown === 'RegistrationForm' }, 'form-tab']">Registration</li>
+        <li @click="formShown = 'LoginForm'" :class="[{ active: formShown === 'LoginForm' }, 'form-tab']">{{ $t('auth.login') }}</li>
+        <li @click="formShown = 'RegistrationForm'" :class="[{ active: formShown === 'RegistrationForm' }, 'form-tab']">{{ $t('auth.register') }}</li>
       </ul>
 
       <keep-alive>

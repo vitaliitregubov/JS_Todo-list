@@ -3,7 +3,7 @@
     <div v-if="errorMsg" class="error-msg">{{ errorMsg }}</div>
 
     <div class="form-group">
-      <label for="register-email" class="form-label">*Email</label>
+      <label for="register-email" class="form-label">*{{ $t('auth.email') }}</label>
       <input
         type="email" v-model.trim="formData.email" required
         id="register-email" :class="[{ 'has-error' : emailError }, 'form-input']" autocomplete="off" 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="form-group password-field">
-      <label for="register-password" class="form-label">*Password</label>
+      <label for="register-password" class="form-label">*{{ $t('auth.password') }}</label>
       <input
         :type="passwordInputType" v-model.trim="formData.password"
         id="register-password" :class="[{ 'has-error': passwordError }, 'form-input']" required
@@ -22,7 +22,7 @@
     </div>
 
     <div class="form-group password-field">
-      <label for="register-confirm-password" class="form-label">*Confirm Password</label>
+      <label for="register-confirm-password" class="form-label">*{{ $t('auth.confirmPass') }}</label>
       <input 
         :type="confirmPasswordInputType" v-model.trim="formData.confirmPassword"
         id="register-confirm-password" :class="[{ 'has-error': passwordError}, 'form-input']" required 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-      <input type="submit" value="Submit" class="form-submit" />
+      <input type="submit" :value="$t('auth.submit')" class="form-submit" />
     </div>
   </form>
 </template>

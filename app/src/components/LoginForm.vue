@@ -2,7 +2,7 @@
   <form @submit.prevent="login(formData)">
     <div v-if="errorMsg" class="error-msg">{{ errorMsg }}</div>
     <div class="form-group">
-      <label for="login-email" class="form-label">*Email</label>
+      <label for="login-email" class="form-label">*{{ $t('auth.email') }}</label>
       <input
         type="email" v-model.trim="formData.email" required 
         id="login-email" :class="[{ 'has-error': errorMsg }, 'form-input']" autocomplete="off"
@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group password-field">
-      <label for="login-password" class="form-label">*Password</label>
+      <label for="login-password" class="form-label">*{{ $t('auth.password') }}</label>
       <input
         :type="passwordInputType" v-model.trim="formData.password" required
         id="login-password" :class="[{ 'has-error': errorMsg }, 'form-input']" 
@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-group">
-      <input type="submit" value="Submit" class="form-submit" />
+      <input type="submit" :value="$t('auth.submit')" class="form-submit" />
     </div>
   </form>
 </template>

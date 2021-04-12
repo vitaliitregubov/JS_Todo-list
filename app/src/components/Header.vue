@@ -1,6 +1,7 @@
 <template>
   <header class="page-header flex align-center between">
     <router-link to="/" class="logo"><h1>InterStore</h1></router-link>
+    <SelectLanguage />
     <section class="flex align-center">
       <div v-if="userLoggedIn" class="flex align-center relative">
         <button @click.stop="accountMenuShown = !accountMenuShown" data-account-menu="sdf" class="account-menu-btn">
@@ -11,21 +12,25 @@
         </router-link>
         <div :class="[{ shown: accountMenuShown}, { dark: theme  === 'dark' }, 'account-settings-menu']" data-account-menu="sfd">
           <input type="checkbox" id="mode" :checked="theme === 'dark'" class="mode-input" @change="toggleMode" />
-          <label for="mode" class="mode-label">Dark mode</label>
-          <a href="#" @click.prevent="signOut" class="logout" title="sign out">Log out</a>
+          <label for="mode" class="mode-label">{{ $t('account.darkMode') }}</label>
+          <a href="#" @click.prevent="signOut" class="logout" title="sign out">{{ $t('account.logOut') }}</a>
         </div>
       </div>
 
-      <a v-else href="#" @click.prevent="toggleModal" class="auth border-rounded">Log in / Sign up</a>
+      <a v-else href="#" @click.prevent="toggleModal" class="auth border-rounded">{{ $t('auth.auth') }}</a>
     </section>
   </header>
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import SelectLanguage from '@/components/SelectLanguage'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'Header',
+  components: {
+    SelectLanguage
+  },
   data() {
     return {
       theme: '',

@@ -1,0 +1,36 @@
+{
+  "auth": {
+    "auth": "Войти / Регистрация",
+    "login": "Войти",
+    "email": "Имейл",
+    "password": "Пароль",
+    "confirmPass": "Подтвердить Пароль",
+    "register": "Регистрация",
+    "submit": "Отправить"
+  },
+  "home": {
+
+  },
+  "productDetails": {
+    "reviews": "Отзывы:",
+    "techSpecs": "Характеристики:"
+  },
+  "cart": {
+    "cartHeading": "Корзина",
+    "emptyCart": "Корзина пуста.",
+    "addProducts": "Добавить товары",
+    "removeProduct": "удалить",
+    "total": "Сумма",
+    "checkOut": "Оформить заказ"
+  },
+  "pageNotFound": {
+
+  },
+  "authModal": {
+    
+  },
+  "account": {
+    "darkMode": "Тёмная тема",
+    "logOut": "Выйти"
+  }
+}

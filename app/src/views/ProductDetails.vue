@@ -14,7 +14,7 @@
       <div class="product-info container flex">
         <div class="flex column">
           <ul class="tech-specs">
-            <h3 class="text-center mb-md">Specs:</h3>
+            <h3 class="text-center mb-md">{{ $t('productDetails.techSpecs') }}</h3>
             <li v-for="(value, key) of findProduct.techSpecs" :key="key" class="flex between">
               <span>{{ key }} :</span>
               <span>{{ value }}</span>
@@ -24,7 +24,7 @@
         </div>
         
         <ul class="reviews">
-          <h3 class="text-center mb-md">Reviews:</h3>
+          <h3 class="text-center mb-md">{{ $t('productDetails.reviews') }}</h3>
           <li v-for="(review, i) in findProduct.reviews" :key="i">
             <article class="review bordered">
               <section>

@@ -3,10 +3,10 @@
     <BreadCrumbs />
 
     <section class="container">
-      <h2>Cart</h2>
+      <h2>{{ $t('cart.cartHeading') }}</h2>
       <div v-if="!$store.state.chosenProducts.length" class="empty-cart">
-        <h3>Your cart is empty.</h3>
-        <router-link :to="{ name: 'Home' }" class="link-to-home-page border-rounded">Add products</router-link>
+        <h3>{{ $t('cart.emptyCart') }}</h3>
+        <router-link :to="{ name: 'Home' }" class="link-to-home-page border-rounded">{{ $t('cart.addProducts') }}</router-link>
       </div>
       <ul class="cart-list">
         <li v-for="item in $store.state.chosenProducts" :key="item.id" class="added-product">
@@ -15,25 +15,29 @@
           </router-link>
           <div class="product-controls">
             <div class="change-quantity">
-              <button :class="[{ 'disabled-btn' : Number(item.quantity) === 1 }, 'change-quantity-btn']" 
-                @click.prevent="decreaseProductQuantity(item.id)"
+              <button 
+                :class="[{ 'disabled-btn' : Number(item.quantity) === 1 }, 'change-quantity-btn']" 
+                @click.prevent="decreaseProductQuantity(item.id)" aria-label="decrease quantity"
               >
                 <i class="fal fa-minus"></i>
               </button>
               <span class="product-quantity">{{ item.quantity }}</span>
-              <button @click.prevent="increaseProductQuantity(item.id)" class="change-quantity-btn">
+              <button 
+                @click.prevent="increaseProductQuantity(item.id)" 
+                aria-label="decrease quantity" class="change-quantity-btn"
+              >
                 <i class="fal fa-plus"></i>
               </button>
             </div>
             <span class="product-price">{{ Number(item.quantity) * Number(item.price) }}</span>
-            <button @click.prevent="removeProduct(item.id)" class="action-btn">Remove</button>
+            <button @click.prevent="removeProduct(item.id)" class="action-btn">{{ $t('cart.removeProduct') }}</button>
           </div>
         </li>
       </ul>
 
       <div v-if="$store.state.chosenProducts.length" class="checkout">
-        <h3 class="total-sum"><span>Total: </span>{{ totalSum }}</h3>
-        <button class="checkout-btn border-rounded">Check out</button>
+        <h3 class="total-sum"><span>{{ $t('cart.total') }}: </span>{{ totalSum }}</h3>
+        <button class="checkout-btn border-rounded">{{ $t('cart.checkOut') }}</button>
       </div>
     </section>
   </main>
@@ -133,11 +137,6 @@ h2
           width: 30px
           text-align: center
 
-      // .remove-btn
-      //   background-color: $color-active
-      //   color: #fff
-      //   padding: 0 10px
-
 .checkout
   display: flex
   flex-direction: column
@@ -151,7 +150,6 @@ h2
 
     span
       font-size: 1.2rem
-      font-weight: 100
 
   .checkout-btn
     margin: 30px auto
