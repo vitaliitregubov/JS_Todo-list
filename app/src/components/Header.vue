@@ -157,7 +157,7 @@ export default {
         height: 20px
         border-radius: 50%
         background-color: #888
-        transition: all .3s ease
+        transition: transform .3s ease
 
       &:hover
         color: $color-active

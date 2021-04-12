@@ -53,7 +53,7 @@ export default createStore({
     }
   },
   getters: {
-    getProduct: (state, id) => state.products.find(item => Number(item.id) === Number(id))
+    getProduct: (state, id) => state.chosenProducts.find(item => Number(item.id) === Number(id))
   }
 })
 

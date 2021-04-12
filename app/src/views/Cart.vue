@@ -1,44 +1,52 @@
 <template>
-  <main class="container">
-    <h2>Cart</h2>
-    <div v-if="!$store.state.chosenProducts.length" class="empty-cart">
-      <h3>Your cart is empty.</h3>
-      <router-link :to="{ name: 'Home' }" class="link-to-home-page border-rounded">Add products</router-link>
-    </div>
-    <ul class="cart-list">
-      <li v-for="item in $store.state.chosenProducts" :key="item.id" class="added-product">
-        <router-link :to="{ name: 'ProductDetails', params: { id: item.id } }" class="product-link" :title="item.name">
-          {{ item.name }}
-        </router-link>
-        <div class="product-controls">
-          <div class="change-quantity">
-            <button :class="[{ 'disabled-btn' : String(item.quantity) === '1' }, 'change-quantity-btn']" 
-              @click.prevent="decreaseProductQuantity(item.id)"
-            >
-              <i class="fal fa-minus"></i>
-            </button>
-            <span class="product-quantity">{{ item.quantity }}</span>
-            <button @click.prevent="increaseProductQuantity(item.id)" class="change-quantity-btn">
-              <i class="fal fa-plus"></i>
-            </button>
-          </div>
-          <span class="product-price">{{ Number(item.quantity) * Number(item.price) }}</span>
-          <button @click.prevent="removeProduct(item.id)" class="remove-btn">Remove</button>
-        </div>
-      </li>
-    </ul>
+  <main>
+    <BreadCrumbs />
 
-    <div v-if="$store.state.chosenProducts.length" class="checkout">
-      <h3 class="total-sum"><span>Total: </span>{{ totalSum }}</h3>
-      <button class="checkout-btn border-rounded">Check out</button>
-    </div>
+    <section class="container">
+      <h2>Cart</h2>
+      <div v-if="!$store.state.chosenProducts.length" class="empty-cart">
+        <h3>Your cart is empty.</h3>
+        <router-link :to="{ name: 'Home' }" class="link-to-home-page border-rounded">Add products</router-link>
+      </div>
+      <ul class="cart-list">
+        <li v-for="item in $store.state.chosenProducts" :key="item.id" class="added-product">
+          <router-link :to="{ name: 'ProductDetails', params: { id: item.id } }" class="product-link" :title="item.name">
+            {{ item.name }}
+          </router-link>
+          <div class="product-controls">
+            <div class="change-quantity">
+              <button :class="[{ 'disabled-btn' : Number(item.quantity) === 1 }, 'change-quantity-btn']" 
+                @click.prevent="decreaseProductQuantity(item.id)"
+              >
+                <i class="fal fa-minus"></i>
+              </button>
+              <span class="product-quantity">{{ item.quantity }}</span>
+              <button @click.prevent="increaseProductQuantity(item.id)" class="change-quantity-btn">
+                <i class="fal fa-plus"></i>
+              </button>
+            </div>
+            <span class="product-price">{{ Number(item.quantity) * Number(item.price) }}</span>
+            <button @click.prevent="removeProduct(item.id)" class="action-btn">Remove</button>
+          </div>
+        </li>
+      </ul>
+
+      <div v-if="$store.state.chosenProducts.length" class="checkout">
+        <h3 class="total-sum"><span>Total: </span>{{ totalSum }}</h3>
+        <button class="checkout-btn border-rounded">Check out</button>
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
+import BreadCrumbs from '@/components/BreadCrumbs'
 import { mapMutations } from "vuex";
 
 export default {
+  components: {
+    BreadCrumbs
+  },
   computed: {
     totalSum() {
       return this.$store.state.chosenProducts.reduce((sum, item) => {
@@ -125,10 +133,10 @@ h2
           width: 30px
           text-align: center
 
-      .remove-btn
-        background-color: $color-active
-        color: #fff
-        padding: 0 10px
+      // .remove-btn
+      //   background-color: $color-active
+      //   color: #fff
+      //   padding: 0 10px
 
 .checkout
   display: flex

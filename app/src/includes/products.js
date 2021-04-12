@@ -65,7 +65,7 @@ const products = [
         id: 2,
         date: '22/03/2020',
         name: 'Jack Daniels',
-        rate: 4,
+        rate: 1,
         text: "Give my money back ****!"
       },
       {
