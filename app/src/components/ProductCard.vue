@@ -101,14 +101,14 @@ export default {
     left: -5px
     width: 250px
     height: 500px
-    padding: 10px 15px
+    padding: 10px
 
     .item-discount
       right: 25px
 
     .features
       font-size: 0.8rem
-      margin-top: 0.4rem
+      margin-top: 0.2rem
 
   &:hover
     .hovered-block
