@@ -16,7 +16,7 @@
       <div class="product-rate-reviews">
         <router-link class="rate" :to="{ name: 'Cart' }">
           <i v-for="i in 5" :key="i" :class="[{ filled: Number(rate) >= i }, 'fas fa-star rate']"></i>
-          <span class="reviews"> {{ reviews.length }} reviews</span>
+          <span class="reviews"> {{ reviews.length }} {{ $t('home.reviews')}}</span>
         </router-link>
       </div>
 
@@ -44,7 +44,7 @@
     <div class="product-rate-reviews">
       <router-link class="rate" :to="{ name: 'Cart' }">
         <i v-for="i in 5" :key="i" :class="[{ filled: Number(rate) >= i }, 'fas fa-star rate']"></i>
-        <span class="reviews"> {{ reviews.length }} reviews</span>
+        <span class="reviews"> {{ reviews.length }} {{ $t('home.reviews')}}</span>
       </router-link>
     </div>
 
@@ -96,7 +96,7 @@ export default {
     position: absolute
     z-index: 10
     background-color: #fff
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
     top: 0
     left: -5px
     width: 250px
@@ -108,7 +108,7 @@ export default {
 
     .features
       font-size: 0.8rem
-      margin-top: 0.2rem
+      margin-top: 0.6rem
 
   &:hover
     .hovered-block

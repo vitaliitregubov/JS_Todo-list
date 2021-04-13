@@ -6,16 +6,20 @@
     "password": "Пароль",
     "confirmPass": "Подтвердить Пароль",
     "register": "Регистрация",
-    "submit": "Отправить"
-  },
-  "errorMsgs": {
-    "invalidCreds": "Неверный Логин или Пароль",
-    "shortPass": "Пароль должен содержать минимум 6 символов",
-    "passMismatch": "Пароли не совпадают",
-    "emailAddressTaken": "Аккаунт с этим Имейл адресом уже зарегистрирован"
+    "submit": "Отправить",
+    "errorMsgs": {
+      "invalidCreds": "Неверный Логин или Пароль",
+      "shortPass": "Пароль должен содержать минимум 6 символов",
+      "passMismatch": "Пароли не совпадают",
+      "emailAddressTaken": "Аккаунт с этим Имейл адресом уже зарегистрирован"
+    }
   },
   "home": {
-
+    "reviews": "отзывов",
+    "darkMode": "Тёмная тема",
+    "logOut": "Выйти",
+    "priceMax": "Цена до",
+    "noProducts": "Товаров не найдено..."
   },
   "productDetails": {
     "reviews": "Отзывы:",
@@ -31,12 +35,5 @@
   },
   "pageNotFound": {
 
-  },
-  "authModal": {
-    
-  },
-  "account": {
-    "darkMode": "Тёмная тема",
-    "logOut": "Выйти"
   }
 }

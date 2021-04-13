@@ -4,12 +4,17 @@ import { auth, usersCollection } from '@/includes/firebase'
 export default createStore({
   state: {
     products: [],
+    filteredProducts: [],
     chosenProducts: [],
     modalShown: false,
     userLoggedIn: false
   },
   mutations: {
-    loadProducts: (state, payload) => state.products = payload,
+    loadProducts: (state, payload) => {
+      state.products = payload
+      state.filteredProducts = payload
+    },
+    filterProducts: (state, filteredArray) => state.filteredProducts = filteredArray,
     clearCart: (state) => state.chosenProducts = [],
     toggleModal: (state) => state.modalShown = !state.modalShown,
     toggleAuth: (state) => state.userLoggedIn = !state.userLoggedIn,

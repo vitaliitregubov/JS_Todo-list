@@ -65,9 +65,9 @@ export default {
       if (password === confirmPassword && password.length >= 6){
         return false
       } else if (password.length < 6) {
-          return this.$t('errorMsgs.shortPass')
+          return this.$t('auth.errorMsgs.shortPass')
       } else if (confirmPassword !== password) {
-          return this.$t('errorMsgs.passMismatch')
+          return this.$t('auth.errorMsgs.passMismatch')
       }
     },
     async register({ email, password, confirmPassword }) {
@@ -82,7 +82,7 @@ export default {
           try {
             await this.$store.dispatch('register', { email, password })
           } catch(error) {
-              this.errorMsg = this.$t('errorMsgs.emailAddressTaken')
+              this.errorMsg = this.$t('auth.errorMsgs.emailAddressTaken')
               this.emailError = true
               return
           }

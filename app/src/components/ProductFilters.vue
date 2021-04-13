@@ -1,25 +1,18 @@
 <template>
   <aside class="filters border-top border-right">
     <section class="filter-group price-filter border-bottom">
-      <h4>Price max:</h4>
+      <h4>{{ $t('home.priceMax') }}:</h4>
       <div class="flex between">
         <input
-          type="range" min="100" max="5000" step="100"
-          v-model.lazy="filters.priceMax" class="price-range"
+          type="range" @change="filter" v-model.lazy="filters.priceMax"
+          min="200" max="5000" step="100" class="price-range"
         />
-        <input type="number" controls="off" v-model.lazy="filters.priceMax" class="price-input" title="max price"/>
+        <input
+          type="number" @change="filter" v-model.lazy="filters.priceMax"
+          controls="off" class="price-input" title="max price"
+        />
       </div>
     </section>
-
-    <section class="filter-group ram-filter border-bottom">
-      <h4>RAM:</h4>
-      <div class="flex column">
-        <div v-for="item in 5" :key="item" class="ram-option-wrapper">
-          <input type="checkbox" :value="item" v-model="filters.ram" :id="`filter-ram-${item}`" />
-          <label :for="`filter-ram-${item}`">{{ item }}GB</label>
-        </div>
-      </div>
-    </section> 
   </aside>
 </template>
 
@@ -28,10 +21,23 @@ export default {
   data() {
     return {
       filters: {
-        priceMax: 5000,
-        ram: []
+        priceMax: null
       }
     }
+  },
+  methods: {
+    filter() {
+      const filteredProducts = this.$store.state.products.filter(item => {
+        return Number(item.price) <= Number(this.filters.priceMax)
+      })
+      this.$store.commit('filterProducts', filteredProducts)
+    }
+  },
+  created() {
+    this.filters.priceMax = this.$store.state.filteredProducts.reduce((acc, item) => {
+      if (Number(item.price) > acc) acc = Number(item.price)
+      return acc
+    }, 0)
   }
 }
 </script>
@@ -89,7 +95,7 @@ export default {
     padding: 30px 20px
 
     .price-range
-      width: 140px
+      width: 100px
       cursor: pointer
 
     .price-input

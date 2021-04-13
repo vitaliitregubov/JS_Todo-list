@@ -6,15 +6,20 @@
     "password": "Password",
     "confirmPass": "Confirm Password",
     "register": "Registration",
-    "submit": "Submit"
-  },
-  "errorMsgs": {
-    "invalidCreds": "Invalid Login or Password",
-    "shortPass": "Password should contain at least 6 chars",
-    "passMismatch": "Passwords don't match",
-    "emailAddressTaken": "This email address is already being used"
+    "submit": "Submit",
+    "errorMsgs": {
+      "invalidCreds": "Invalid Login or Password",
+      "shortPass": "Password should contain at least 6 chars",
+      "passMismatch": "Passwords don't match",
+      "emailAddressTaken": "This email address is already being used"
+    }
   },
   "home": {
+    "reviews": "reviews",
+    "darkMode": "Dark mode",
+    "logOut": "Log out",
+    "priceMax": "Price max",
+    "noProducts": "No products found..."
   },
   "productDetails": {
     "reviews": "Reviews:",
@@ -30,12 +35,5 @@
   },
   "pageNotFound": {
 
-  },
-  "authModal": {
-
-  },
-  "account": {
-    "darkMode": "Dark mode",
-    "logOut": "Log out"
   }
 }

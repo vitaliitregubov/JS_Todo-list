@@ -12,8 +12,8 @@
         </router-link>
         <div :class="[{ shown: accountMenuShown}, { dark: theme  === 'dark' }, 'account-settings-menu']" data-account-menu="sfd">
           <input type="checkbox" id="mode" :checked="theme === 'dark'" class="mode-input" @change="toggleMode" />
-          <label for="mode" class="mode-label">{{ $t('account.darkMode') }}</label>
-          <a href="#" @click.prevent="signOut" class="logout" title="sign out">{{ $t('account.logOut') }}</a>
+          <label for="mode" class="mode-label">{{ $t('home.darkMode') }}</label>
+          <a href="#" @click.prevent="signOut" class="logout" title="sign out">{{ $t('home.logOut') }}</a>
         </div>
       </div>
 
