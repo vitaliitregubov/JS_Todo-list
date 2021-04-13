@@ -11,13 +11,17 @@
 export default {
   data() {
     return {
-      languages: ['en', 'ru']
+      languages: ['en', 'ru'],
     }
   },
   methods: {
-    changeLanguage() {
-      this.$i18n.locale = this.$i18n.locale === 'en' ? 'ru' : 'en'
-    }
+  },
+  created() {
+    !localStorage.getItem('language') && localStorage.setItem('language', 'en')
+    this.$i18n.locale = localStorage.getItem('language')
+  },
+  updated() {
+    localStorage.setItem('language', this.$i18n.locale)
   }
 }
 </script>

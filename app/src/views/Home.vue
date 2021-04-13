@@ -6,7 +6,7 @@
       <ProductCard
         v-for="item in products" :key="item.id"
         :id="item.id" :name="item.name" :price="item.price" :discount="item.discount" 
-        :available="item.available" :reviews="item.reviews" :rate="item.rate" :image="item.image"
+        :features="item.features" :reviews="item.reviews" :rate="item.rate" :image="item.image"
       />
     </section>
   </main>

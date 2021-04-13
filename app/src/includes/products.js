@@ -13,6 +13,12 @@ const products = [
       RAM: '2GB',
       country: 'South Korean',
     },
+    features: `
+      6.7-inch Super Retina XDR Display, Ceramic Shield, 5G Connectivity, A14 Bionic Chip,
+      Pro Camera System, 5x Optical Zoom Range, Night Mode, Deep Fusion, Smart HDR 3
+      Apple ProRAW 4K Dolby Vision, HDR Recording, LiDAR Scanner, Night Mode Portraits,
+      IP68 Water Resistance, Supports MagSafe Accessories, iOS 14
+    `,
     rate: "4",
     reviews: [
       {
@@ -45,6 +51,12 @@ const products = [
       RAM: '3GB',
       country: 'USA',
     },
+    features: `
+      6.7-inch Super Retina XDR Display, Ceramic Shield, 5G Connectivity, A14 Bionic Chip,
+      Pro Camera System, 5x Optical Zoom Range, Night Mode, Deep Fusion, Smart HDR 3
+      Apple ProRAW 4K Dolby Vision, HDR Recording, LiDAR Scanner, Night Mode Portraits,
+      IP68 Water Resistance, Supports MagSafe Accessories, iOS 14
+    `,
     rate: "5",
     reviews: [
       {
@@ -91,6 +103,12 @@ const products = [
       RAM: '5GB',
       country: 'China',
     },
+    features: `
+      6.7-inch Super Retina XDR Display, Ceramic Shield, 5G Connectivity, A14 Bionic Chip,
+      Pro Camera System, 5x Optical Zoom Range, Night Mode, Deep Fusion, Smart HDR 3
+      Apple ProRAW 4K Dolby Vision, HDR Recording, LiDAR Scanner, Night Mode Portraits,
+      IP68 Water Resistance, Supports MagSafe Accessories, iOS 14
+    `,
     rate: "5",
     reviews: [
       {
@@ -144,6 +162,12 @@ const products = [
       RAM: '4GB',
       country: 'USA',
     },
+    features: `
+      6.7-inch Super Retina XDR Display, Ceramic Shield, 5G Connectivity, A14 Bionic Chip,
+      Pro Camera System, 5x Optical Zoom Range, Night Mode, Deep Fusion, Smart HDR 3
+      Apple ProRAW 4K Dolby Vision, HDR Recording, LiDAR Scanner, Night Mode Portraits,
+      IP68 Water Resistance, Supports MagSafe Accessories, iOS 14
+    `,
     rate: "4",
     reviews: [
       {
@@ -190,6 +214,12 @@ const products = [
       RAM: '4GB',
       country: 'Finland',
     },
+    features: `
+      6.7-inch Super Retina XDR Display, Ceramic Shield, 5G Connectivity, A14 Bionic Chip,
+      Pro Camera System, 5x Optical Zoom Range, Night Mode, Deep Fusion, Smart HDR 3
+      Apple ProRAW 4K Dolby Vision, HDR Recording, LiDAR Scanner, Night Mode Portraits,
+      IP68 Water Resistance, Supports MagSafe Accessories, iOS 14
+    `,
     rate: "3",
     reviews: [
       {

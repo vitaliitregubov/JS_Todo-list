@@ -8,6 +8,7 @@
         <span class="product-rate">
           <i v-for="i in 5" :key="i" :class="[{ filled : findProduct.rate >= i }, 'fas fa-star rate']" />
         </span>
+        <span>{{ findProduct.price }}</span>
         <OrderProductBtn :id="findProduct.id" />
       </h2>
 
@@ -96,6 +97,7 @@ h2
 
   .product-rate
     padding-left: 15px
+    margin-right: auto
 
 .tech-specs
   li

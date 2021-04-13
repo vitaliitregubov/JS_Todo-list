@@ -47,7 +47,7 @@ export default {
         await this.$store.dispatch('login', { email, password })
         window.location.reload()
       } catch(error) {
-        this.errorMsg = 'Invalid Login or Password'
+        this.errorMsg = this.$t('errorMsgs.invalidCreds')
         return
       }
     }

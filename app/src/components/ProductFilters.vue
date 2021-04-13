@@ -19,11 +19,7 @@
           <label :for="`filter-ram-${item}`">{{ item }}GB</label>
         </div>
       </div>
-    </section>  
-
-    <section class="filter-group cpu-filter border-bottom">
-      <h4>CPU:</h4>
-    </section>
+    </section> 
   </aside>
 </template>
 
